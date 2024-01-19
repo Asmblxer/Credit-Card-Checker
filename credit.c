@@ -53,8 +53,12 @@ bool validation (char* num) {
 }
 
 void print_card_brand(char* num) {
-     if(num[0] == '3' && (num[1] == '4' || num[1] == '7')) printf("AMEX\n");
-     else if(num[0] == '5' && num[1] - '0' <= 5) printf("MASTERCARD\n");
-     else if(num[0] == '4') printf("VISA\n");
-     else printf("INVALID\n");
+    if (num[0] == '3' && (num[1] == '4' || num[1] == '7') && strlen(num) == 15)
+        printf("AMEX\n");
+    else if (num[0] == '5' && num[1] - '0' <= 5 && strlen(num) == 16)
+        printf("MASTERCARD\n");
+    else if ((num[0] == '4' && strlen(num) == 13) || (num[0] == '4' && (num[1] - '0' <= 6 && strlen(num) == 16)))
+        printf("VISA\n");
+    else
+        printf("INVALID\n");
 }
